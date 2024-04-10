@@ -1,119 +1,56 @@
-Q1.Read about different between window, screen document in javacsript?
-
-
-i)Document:
-
-              =>It represents any HTML document or web page that is loaded in the browser.
-              =>It is loaded inside the window.
-              =>It is the object of window property.
-              =>All the tags, elements with attributes in HTML are part of the document.
-              =>We can access the document from a window using the window. document
-              =>The document is part of BOM (browser object model) and dom (Document object model)
-              =>Properties of document objects such as title, body, cookies, etc can also be accessed by a window like this window. document.title
-syntax:
-
-      document.propertyname;
-example:
-
-     document.title :  will return the title of the document
-
-
-
-ii)Window Object:
-              =>It represents a browser window or frame that displays the contents of the webpage.  
-              =>It is the very first object that is loaded in the browser. 
-              =>It is the object of the browser.
-              =>Global objects, functions, and variables of JavaScript are members of the window object.
-              =>We can access the window from the window only. i.e. window.window
-              =>The window is part of BOM, not DOM.Properties of the window object cannot be accessed by the document object.
-
-syntax:
-
-window.propertyname;
-
-example:
-
-window.innerHeight : will return the height of the content area of the browser
-
-
-
-iii) screen:
-
-
-               =>Screen is a small information object about physical screen dimensions . 
-               =>It can be used to display screen width, height, colorDepth, pixelDepth etc. 
-               =>It is not mandatory to write window prefix with screen object. 
-               =>It can be written without window prefix.
-
-Properties:
- 
-screen.width
-screen.height
-screen.availWidth
-screen.availHeight
-screen.colorDepth
-screen.pixelDepth
-
-
-
-2.create own resume using JSON?
-
-
-let json ={
-    "basic":
-    {
-        "name":"gayathri",
-        "email id":"gayu.abgl@gmail.com",
-        "phone": 9788776099,
-        "degree": "B.E computer science",
-        "Gender": "Female",
-        "location": "Dindigul",
-         "address": "No 8 Thirumalaisamypuram nagalnagar dindigul",
-         "postalCode": "621003",
-         "city": "Dindigul",
-        "region": "hindu"
-    
+let myResume = {
+    name : 'Gayathri BalaKrishnan',
+    age : 33,
+    phone : 9788776099,
+    email : 'gayu.abgl@gmail.com',
+    languages : ['Tamil', 'kannada', 'English', 'Hindi'],
+    skills : {
+        markupLanguages : ['html', 'css'],
+        programmingLanguage : ['javascript', 'python'],
+        dataBase : 'mongodb' 
     },
-    "Academic Profile":[
-    {
-        "B.E computer science":2010-2013,
-        "Name of Institue":"Idhaya Enginnering college for women",
-        "percentage":70,
-        "Diploma in computer science":2008-2010,
-        "Name of Institue":"Elumalai polytechnic college",
-        "percentage":74.5,
-        "seconday school":2008,
-        "Name of Institue":"A.K.T academy matric hr sc school",
-        "percentage":70,
-}],
-    "Work Experience":[
-    {
-      "system analysis":"SMC COOPERATIVE HOUSE BUILDING SOCITY LTD (MAY 2022 TO FEB 2023",
-        "Telecalling and system analyst":"ANNAMALAI INDANE AGENCY (JUNE 2015 TO FEB 2019",
-        "Trainee":"OPTIMUS SOFTWARE SOLUTION(APRIL 2014 TO MAY 2015",
-    }],
-    "Course Attend":[
-    {
-        "PHP, Java and J2EE":"Attended the  course in college campus for 10 days by PEARLSYS.SALEM",
-        "Full stack Developer":"guvi geek network private limited,chennai",
-    }],
-    "Acadamic project":[
-    {
-        "project":"Knowledge trackers in DIP and Discovery pattern for text mining using .NET",
-    }],
-    "known language":[{
-        "language":"English,Tamil",
-    }],
-    "Technical skill":[
-        {
-            "Languages": "C, C++, PHP",
-            "Web Developing": "HTML 5",
-            "Database": "My SQL",
-            "Productivity Software": "MS-Office (Word, Excel & Power Point)",
-            "Operating Systems": "Windows Family",
+    education : {
+        SSLC : {
+            year : 2010,
+            schoolName : 'A.K.T Academy Matric Hr, sec School, Kallakurichi'
+        },
+        DIPLOMA: {
+            year : 2013,
+            schoolName : 'Elumalai Polytechnic College, Villupuram',
+            University : 'Anna University'
 
         },
-    ]
-}
-console.log(json);
+        UG : {
+            year : 2016,
+            collegeName : 'Idhaya Enginnering College for Women , ChinnaSalem ',
+            University : 'Anna University'
+        }
+    }
+};
+    
+// JSONstringify
+let JSONstringify = (JSON.stringify(myResume));
 
+// JSONparse
+let JSONparse = (JSON.parse(JSONstringify));
+
+
+// Using for...in loop:
+for ( let key in JSONparse){
+    console.log(key, JSONparse[key]);
+}
+
+// Using for...of loop:
+for (let value of Object.values(JSONparse)){
+    console.log(value);
+}
+
+// Using for...of loop with nested arrays
+for (let languages of JSONparse.languages){
+    console.log(languages);
+}
+
+// Using forEach for iterating over the languages array
+JSONparse.languages.forEach((languages) =>{
+    console.log(languages);
+});
